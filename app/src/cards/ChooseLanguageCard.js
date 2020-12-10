@@ -1,25 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { Fade } from 'react-reveal';
+import { useRecoilState } from 'recoil';
 
-const ChooseLanguageCard = ({isVisible = false, setVisibility}) => {
-    const [isOpen, setIsOpen] = useState(isVisible);
-    console.log(isVisible);
+import visibilityState from '../visibilityState';
 
-    useEffect(() => {
-        setIsOpen(isVisible);
-    }, [isVisible]);
+const ChooseLanguageCard = () => {
+    // const [isOpen, setIsOpen] = useState(isVisible);
+    // console.log("show chooseLanguageCard: " + isVisible);
+
+    const [isVisible, setVisibilityState] = useRecoilState(visibilityState);
+    
+
+    // useEffect(() => {
+    //     setIsOpen(isVisible);
+    // }, [isVisible]);
 
     return (
         <React.Fragment>
-            <Fade left opposite collapse when={isOpen} duration={500} delay={1500} >
+            <Fade left opposite collapse when={isVisible.chooseLanguage} duration={500} delay={1500} delayOut={0} >
                 <Card>
                     <Card.Body>
                         <Card.Text>
-                        This is card number 1
+                        What's your target language?
                         </Card.Text>
-                        <Button variant="light" onClick={() => setVisibility({intro: true, chooseLanguage: false})}
-                        >Back</Button>
+                        <Button variant="light" onClick={() => { 
+                            setVisibilityState({...isVisible, ...{chooseLanguage: false, intro: true}});
+                        }}
+                        >Back</Button>{' '}
+                        <Button variant="light" onClick={() => { return }}
+                        >Next</Button>
                     </Card.Body>
                 </Card>
             </Fade>
