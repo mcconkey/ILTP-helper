@@ -22,7 +22,7 @@ function App() {
   return (
     <div className="parent App" style={{overflow: 'hidden'}}>
       
-      <Fade left collapse opposite when={visibilityState.intro} duration={500}>
+      <Fade left collapse opposite when={visibilityState.intro} duration={500} delay={200}>
           <Card style={{width: '40rem'}}>
             <Card.Body>
               <Card.Title>Card Title</Card.Title>
@@ -40,7 +40,7 @@ function App() {
             </Card.Body>
           </Card>
         </Fade>
-        <ChooseLanguageCard isVisible={visibilityState.chooseLanguage} showPrevious={setVisibility}/>
+        <ChooseLanguageCard isVisible={visibilityState.chooseLanguage} setVisibility={setVisibility}/>
        
     </div>
   );
