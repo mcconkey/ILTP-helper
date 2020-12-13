@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { Fade } from 'react-reveal';
 
@@ -15,9 +15,33 @@ function App() {
 
   const [isVisible, setVisibilityState] = useRecoilState(visibilityState);
 
+  let vis = {...isVisible};
+
+  useEffect(() => {
+      vis = {...isVisible };
+  });
+
+  const hideCard = (name = "") => {
+    console.log("hidecard");
+    vis[name] = false;
+    console.log(vis)
+    setVisibilityState(vis);
+    return Promise.resolve();
+  };
+
+  const showCard = async (name = "") => {
+    console.log("showCard: " + name);
+    console.log(vis);
+    let visible = {...vis};
+    visible[name] = true;
+    console.log(visible)
+    setVisibilityState(visible);
+    return Promise.resolve(visible);
+  };
+
   return (
         <div className="parent App" style={{overflow: 'hidden'}}>
-        <Fade left collapse opposite when={isVisible.intro} duration={500} delay={200}>
+        <Fade left collapse opposite when={isVisible.intro} duration={500} delay={200} onReveal={() => console.log("blahblahb") }>
             <Card style={{width: '40rem'}} >
               <Card.Body>
                 <Card.Title>Card Title</Card.Title>
@@ -28,14 +52,19 @@ function App() {
                   <Button 
                     variant="light" 
                     onClick={() => {
-                      setVisibilityState({...isVisible, ...{intro: false, chooseLanguage: true}});
+                      hideCard("intro").then(
+                        setTimeout(() => { showCard("chooseLanguage"); }, 1000)
+                      );
                     }}>
                       Get Started
                   </Button>
               </Card.Body>
             </Card>
           </Fade>
-          <ChooseLanguageCard />
+          <ChooseLanguageCard 
+            back={() => { hideCard("chooseLanguage"); showCard("intro")  }}
+            next={() => { hideCard("chooseLanguage"); showCard("previousScores")  }} 
+          />
           <PreviousScoresCard />
       </div>
   );
