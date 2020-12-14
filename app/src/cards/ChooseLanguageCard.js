@@ -1,15 +1,13 @@
 import React, { useEffect } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { Fade } from 'react-reveal';
-import { useRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 
 import visibilityState from '../visibilityState';
 
 const ChooseLanguageCard = ({back, next}) => {
 
-    const [isVisible, setVisibilityState] = useRecoilState(visibilityState);
-    let visible = isVisible.chooseLanguage ? true : false;
-
+    let visible = useRecoilValue(visibilityState).chooseLanguage ? true : false;
     return (
         <React.Fragment>
             <Fade

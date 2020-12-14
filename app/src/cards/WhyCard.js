@@ -5,9 +5,9 @@ import { useRecoilValue } from 'recoil';
 
 import visibilityState from '../visibilityState';
 
-const PreviousScoresCard = ({next, back}) => {
+const WhyCard = ({next, back}) => {
 
-    let visible = useRecoilValue(visibilityState).previousScores ? true : false;
+    let visible = useRecoilValue(visibilityState).why ? true : false;
     
     return (
         <React.Fragment>
@@ -43,4 +43,4 @@ const PreviousScoresCard = ({next, back}) => {
 
 }
 
-export default PreviousScoresCard;
+export default WhyCard;

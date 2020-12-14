@@ -30,14 +30,17 @@ function App() {
   };
 
   const showCard = async (name = "") => {
-    console.log("showCard: " + name);
-    console.log(vis);
     let visible = {...vis};
     visible[name] = true;
-    console.log(visible)
     setVisibilityState(visible);
     return Promise.resolve(visible);
   };
+
+  const hideThenShow = (hide, show ) => {
+    hideCard(hide).then(
+      setTimeout(() => { showCard(show); }, 1000)
+    );
+  }
 
   return (
         <div className="parent App" style={{overflow: 'hidden'}}>
@@ -52,9 +55,8 @@ function App() {
                   <Button 
                     variant="light" 
                     onClick={() => {
-                      hideCard("intro").then(
-                        setTimeout(() => { showCard("chooseLanguage"); }, 1000)
-                      );
+
+                      hideThenShow("intro", "chooseLanguage");
                     }}>
                       Get Started
                   </Button>
@@ -62,10 +64,13 @@ function App() {
             </Card>
           </Fade>
           <ChooseLanguageCard 
-            back={() => { hideCard("chooseLanguage"); showCard("intro")  }}
-            next={() => { hideCard("chooseLanguage"); showCard("previousScores")  }} 
+            back={() => { hideThenShow("chooseLanguage", "intro");  }}
+            next={() => { hideThenShow("chooseLanguage", "previousScores"); }} 
           />
-          <PreviousScoresCard />
+          <PreviousScoresCard
+            back={() => { hideThenShow("previousScores", "chooseScores");  }}
+            next={() => { hideThenShow("previousScores", "intro"); }} 
+          />
       </div>
   );
 }
