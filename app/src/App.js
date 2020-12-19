@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useEffect } from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button, ProgressBar } from 'react-bootstrap';
 import { Fade } from 'react-reveal';
 
 import { useRecoilState } from 'recoil';
@@ -43,8 +43,14 @@ function App() {
   }
 
   return (
-        <div className="parent App" style={{overflow: 'hidden'}}>
-        <Fade left collapse opposite when={isVisible.intro} duration={500} delay={200} onReveal={() => console.log("blahblahb") }>
+    <div class="App" style={{overflow: 'hidden'}}>
+        <div className="Header">
+          <p>ILTP-Helper</p>
+           <ProgressBar now={60} />
+        </div>
+        <div className="Content">
+          <div className="Cards">
+          <Fade left collapse opposite when={isVisible.intro} duration={500} delay={200} onReveal={() => console.log("blahblahb") }>
             <Card style={{width: '40rem'}} >
               <Card.Body>
                 <Card.Title>Card Title</Card.Title>
@@ -71,6 +77,12 @@ function App() {
             back={() => { hideThenShow("previousScores", "chooseScores");  }}
             next={() => { hideThenShow("previousScores", "intro"); }} 
           />
+            </div>      
+
+      </div>
+      <div class="Footer">
+        <p>ILTP-Helper Copyright 2020</p>
+      </div>
       </div>
   );
 }
