@@ -8,12 +8,14 @@ import { useRecoilState } from 'recoil';
 import ChooseLanguageCard from './cards/ChooseLanguageCard';
 import PreviousScoresCard from './cards/PreviousScoresCard';
 
-import visibilityState from './visibilityState';
+import visibilityState from './atoms/visibilityState';
+import progressState from './atoms/progressState';
 
 
 function App() {
 
   const [isVisible, setVisibilityState] = useRecoilState(visibilityState);
+  const [ progress, setProgress] = useRecoilState(progressState);
 
   let vis = {...isVisible};
 

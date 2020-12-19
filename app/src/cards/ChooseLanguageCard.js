@@ -3,7 +3,7 @@ import { Card, Button } from 'react-bootstrap';
 import { Fade } from 'react-reveal';
 import { useRecoilValue } from 'recoil';
 
-import visibilityState from '../visibilityState';
+import visibilityState from '../atoms/visibilityState';
 
 const ChooseLanguageCard = ({back, next}) => {
 
