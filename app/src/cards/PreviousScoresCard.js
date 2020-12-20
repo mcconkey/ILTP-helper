@@ -10,12 +10,29 @@ import progressState from '../atoms/progressState';
 const PreviousScoresCard = ({next, back}) => {
 
     const visible = useRecoilValue(visibilityState).previousScores ? true : false;
-    const setProgress = useSetRecoilState(progressState);
+    const [progress, setProgress] = useRecoilState(progressState);
     const [survey, setSurvey] = useRecoilState(surveyState);
+
 
     const changeReadingScoreHandler = (event) => {
 
+        if(!survey.readingScore){
+            setProgress(progress + 5);
+        }
+        
+         setSurvey({...survey, ...{readingScore: event.target.value}});
     };
+
+
+    const changeListeningScoreHandler = (event) => {
+
+        if(!survey.listingScore){
+            setProgress(progress + 5);
+        }
+        
+        setSurvey({...survey, ...{listeningScore: event.target.value}});
+    };
+
 
     return (
         <React.Fragment>
@@ -69,7 +86,7 @@ const PreviousScoresCard = ({next, back}) => {
                                     id="listeningScore"
                                     list="scores" 
                                     style={{margin: '.5vh', padding: '.5rem'}}
-                                    onChange={changeReadingScoreHandler} >
+                                    onChange={changeListeningScoreHandler} >
                                         <option>0+</option>
                                     <option>1</option>
                                     <option>1+</option>
