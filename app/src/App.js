@@ -15,7 +15,7 @@ import progressState from './atoms/progressState';
 function App() {
 
   const [isVisible, setVisibilityState] = useRecoilState(visibilityState);
-  const [ progress, setProgress] = useRecoilState(progressState);
+  const [progress, setProgress] = useRecoilState(progressState);
 
   let vis = {...isVisible};
 
@@ -24,9 +24,7 @@ function App() {
   });
 
   const hideCard = (name = "") => {
-    console.log("hidecard");
     vis[name] = false;
-    console.log(vis)
     setVisibilityState(vis);
     return Promise.resolve();
   };
@@ -48,7 +46,7 @@ function App() {
     <div class="App" style={{overflow: 'hidden'}}>
         <div className="Header">
           <p>ILTP-Helper</p>
-           <ProgressBar now={60} />
+           <ProgressBar now={progress} />
         </div>
         <div className="Content">
           <div className="Cards">

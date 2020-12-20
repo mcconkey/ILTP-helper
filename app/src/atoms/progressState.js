@@ -6,9 +6,7 @@ import { atom } from 'recoil';
 
 const progressState = atom({
     key: 'progressState',
-    default: {
-        intro: true,
-    },
+    default: 0,
 });
 
 export default progressState;

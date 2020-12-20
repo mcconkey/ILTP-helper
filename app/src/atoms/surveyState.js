@@ -6,9 +6,7 @@ import { atom } from 'recoil';
 
 const surveyState = atom({
     key: 'surveyState',
-    default: {
-        intro: true,
-    },
+    default: {},
 });
 
 export default surveyState;

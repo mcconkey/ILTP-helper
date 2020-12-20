@@ -1,13 +1,17 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { Fade } from 'react-reveal';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 import visibilityState from '../atoms/visibilityState';
+import progressState from '../atoms/progressState';
 
 const PreviousScoresCard = ({next, back}) => {
 
     let visible = useRecoilValue(visibilityState).previousScores ? true : false;
+    let [progress, setProgress] = useRecoilState(progressState);
+
+    
 
     return (
         <React.Fragment>
