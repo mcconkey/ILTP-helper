@@ -24,12 +24,14 @@ function App() {
   });
 
   const hideCard = (name = "") => {
+    console.log("hiding..." + name);
     vis[name] = false;
     setVisibilityState(vis);
     return Promise.resolve();
   };
 
   const showCard = async (name = "") => {
+    console.log("showing... " + name);
     let visible = {...vis};
     visible[name] = true;
     setVisibilityState(visible);
@@ -37,8 +39,12 @@ function App() {
   };
 
   const hideThenShow = (hide, show ) => {
+
+    console.log("show hide called");
+
+    console.log(isVisible);
     hideCard(hide).then(
-      setTimeout(() => { showCard(show); }, 1000)
+      setTimeout(() => { showCard(show).then( console.log(isVisible)); }, 1000)
     );
   }
 
@@ -74,10 +80,10 @@ function App() {
             next={() => { hideThenShow("chooseLanguage", "previousScores"); }} 
           />
           <PreviousScoresCard
-            back={() => { hideThenShow("previousScores", "chooseScores");  }}
+            back={() => { hideThenShow("previousScores", "chooseLanguage");  }}
             next={() => { hideThenShow("previousScores", "intro"); }} 
           />
-            </div>      
+          </div>      
 
       </div>
       <div class="Footer">

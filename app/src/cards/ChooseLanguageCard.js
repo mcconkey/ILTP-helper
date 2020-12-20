@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Card, Button, Form } from 'react-bootstrap';
 import { Fade } from 'react-reveal';
-import { useRecoilSnapshot, useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue, useSetRecoilState, } from 'recoil';
 
 import visibilityState from '../atoms/visibilityState';
 import progressState from '../atoms/progressState';
@@ -9,13 +9,13 @@ import surveyState from '../atoms/surveyState';
 
 const ChooseLanguageCard = ({back, next}) => {
 
-    let visible = useRecoilValue(visibilityState).chooseLanguage ? true : false;
-    let [progress, setProgress] = useRecoilState(progressState);
-    let [survey, setSurvey] = useRecoilState(surveyState);
+    const visible = useRecoilValue(visibilityState).chooseLanguage ? true : false;
+    const setProgress = useSetRecoilState(progressState);
+    const [survey, setSurvey] = useRecoilState(surveyState);
 
     const onChangeLanguageHandler = (event) => {
         
-        setSurvey({...survey, ...{language: event.target.value }});
+        setSurvey({...survey, ...{targetLanguage: event.target.value }});
         setProgress(10);
 
     } 
