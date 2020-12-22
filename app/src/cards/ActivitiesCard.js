@@ -26,7 +26,7 @@ const ActivitiesCard = ({next, back}) => {
                 <Card style={{width: '40rem'}}>
                     <Card.Body>
                         <Card.Text>
-                        Previous Scores...
+                        What activities are you going to do?
                         </Card.Text>
                         <Button 
                             variant="light" 

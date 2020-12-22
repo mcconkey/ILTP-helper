@@ -5,7 +5,7 @@ import { Fade } from 'react-reveal';
 
 import {AiOutlineFileText, AiFillCloseCircle} from 'react-icons/ai';
 
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 import ChooseLanguageCard from './cards/ChooseLanguageCard';
 import PreviousScoresCard from './cards/PreviousScoresCard';
@@ -20,11 +20,13 @@ import WhoCard from './cards/WhoCard';
 
 import visibilityState from './atoms/visibilityState';
 import progressState from './atoms/progressState';
+import surveyState from './atoms/surveyState';
 
 function App() {
 
   const [isVisible, setVisibilityState] = useRecoilState(visibilityState);
   const [progress, setProgress] = useRecoilState(progressState);
+  const survey = useRecoilValue(surveyState);
 
   let vis = {...isVisible};
 
@@ -68,10 +70,11 @@ function App() {
                   <Fade left collapse opposite when={isVisible.intro} duration={500} delay={200} onReveal={() => console.log("blahblahb")}>
                       <Card style={{ width: '40rem' }} >
                           <Card.Body>
-                              <Card.Title>Card Title</Card.Title>
+                              <Card.Title>Welcome!</Card.Title>
                               <Card.Text>
-                                  Some quick example text to build on the card title and make up the bulk of
-                                  the card's content.
+                                This app is designed to make it easier for linguists to develop an
+                                Individualized Language Training Plan.  This program will ask you a series of 
+                                questions which will help you focus on achieving your Language learning goals.
                 </Card.Text>
                               <Button
                                   variant="light"
@@ -130,7 +133,7 @@ function App() {
                 <AiFillCloseCircle size='1.5em' onClick={() => hideCard("menuOverlay")} />
             </div>
 
-            <div class="OverlayContent">This is some content</div> 
+            <div class="OverlayContent">Learner Survey <div style={{textAlign: "left", padding: '2em'}}><pre style={{fontSize: '.5em', color: 'white'}}>{JSON.stringify(survey, null, 2)}</pre></div> </div> 
         </div>   
 
                  

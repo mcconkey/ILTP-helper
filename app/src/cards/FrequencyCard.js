@@ -26,7 +26,7 @@ const FrequencyCard = ({next, back}) => {
                 <Card style={{width: '40rem'}}>
                     <Card.Body>
                         <Card.Text>
-                        Previous Scores...
+                        How often are you going to do those activities?
                         </Card.Text>
                         <Button 
                             variant="light" 
