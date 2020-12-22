@@ -1,7 +1,8 @@
 import React from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button, Form } from 'react-bootstrap';
 import { Fade } from 'react-reveal';
 import { useRecoilState, useRecoilValue } from 'recoil';
+
 
 import visibilityState from '../atoms/visibilityState';
 import progressState from '../atoms/progressState';
@@ -12,6 +13,16 @@ const WhyCard = ({next, back}) => {
     const [progress, setProgress] = useRecoilState(progressState);
     const [survey, setSurvey] = useRecoilState(surveyState);
     
+    const onChangeWhyHandler = (event) => {
+
+        if(!survey.why){
+
+            setProgress(progress + 10);
+        }
+        
+        setSurvey({...survey, ...{why: event.target.value}});
+    };
+
     return (
         <React.Fragment>
             <Fade 
@@ -26,6 +37,13 @@ const WhyCard = ({next, back}) => {
                     <Card.Body>
                         <Card.Text>
                         Why is achieving this goal important to you?
+                        <Form.Control 
+                                placeholder="Choose a language..." 
+                                as="textarea"
+                                size="lg" 
+                                rows={3}
+                                style={{margin: '1vh', padding: '.5rem'}}
+                                onChange={onChangeWhyHandler} />
                         </Card.Text>
                         <Button 
                             variant="light" 

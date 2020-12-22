@@ -109,7 +109,7 @@ function App() {
                   />
                   <ActivitiesCard
                       back={() => { hideThenShow("activities", "focus"); }}
-                      next={() => { hideThenShow("activities", "freqency"); }}
+                      next={() => { hideThenShow("activities", "frequency"); }}
                   />
                   <FrequencyCard
                       back={() => { hideThenShow("frequency", "activities"); }}
@@ -125,12 +125,12 @@ function App() {
               <p>ILTP-Helper Copyright 2020</p>
           </div>
           <div class="BottomRightMenu">
-            <AiOutlineFileText size='2em' onClick={() => showCard("menuOverlay")} />
+            <AiOutlineFileText cursor="pointer" size='2em' onClick={() => showCard("menuOverlay")} />
           </div>
           
         <div class="GlassOverlay" style={{width: isVisible.menuOverlay ? '30vw' : '0px'}}>
             <div class="GlassOverlayBottom">
-                <AiFillCloseCircle size='1.5em' onClick={() => hideCard("menuOverlay")} />
+                <AiFillCloseCircle cursor="pointer" size='1.5em' onClick={() => hideCard("menuOverlay")} />
             </div>
 
             <div class="OverlayContent">Learner Survey <div style={{textAlign: "left", padding: '2em'}}><pre style={{fontSize: '.5em', color: 'white'}}>{JSON.stringify(survey, null, 2)}</pre></div> </div> 
