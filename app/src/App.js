@@ -7,10 +7,17 @@ import { useRecoilState } from 'recoil';
 
 import ChooseLanguageCard from './cards/ChooseLanguageCard';
 import PreviousScoresCard from './cards/PreviousScoresCard';
+import GoalCard from './cards/GoalCard';
+import WhyCard from './cards/WhyCard';
+import FocusCard from './cards/FocusCard';
+import ActivitiesCard from './cards/ActivitiesCard';
+import FrequencyCard from './cards/FrequencyCard';
+import WhoCard from './cards/WhoCard';
+
+
 
 import visibilityState from './atoms/visibilityState';
 import progressState from './atoms/progressState';
-
 
 function App() {
 
@@ -55,36 +62,59 @@ function App() {
            <ProgressBar now={progress} />
         </div>
         <div className="Content">
-          <div className="Cards">
-          <Fade left collapse opposite when={isVisible.intro} duration={500} delay={200} onReveal={() => console.log("blahblahb") }>
-            <Card style={{width: '40rem'}} >
-              <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                  <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                  </Card.Text>
-                  <Button 
-                    variant="light" 
-                    onClick={() => {
+            <div className="Cards">
+                <Fade left collapse opposite when={isVisible.intro} duration={500} delay={200} onReveal={() => console.log("blahblahb")}>
+                    <Card style={{ width: '40rem' }} >
+                        <Card.Body>
+                            <Card.Title>Card Title</Card.Title>
+                            <Card.Text>
+                                Some quick example text to build on the card title and make up the bulk of
+                                the card's content.
+                </Card.Text>
+                            <Button
+                                variant="light"
+                                onClick={() => {
 
-                      hideThenShow("intro", "chooseLanguage");
-                    }}>
-                      Get Started
-                  </Button>
-              </Card.Body>
-            </Card>
-          </Fade>
-          <ChooseLanguageCard 
-            back={() => { hideThenShow("chooseLanguage", "intro");  }}
-            next={() => { hideThenShow("chooseLanguage", "previousScores"); }} 
-          />
-          <PreviousScoresCard
-            back={() => { hideThenShow("previousScores", "chooseLanguage");  }}
-            next={() => { hideThenShow("previousScores", "intro"); }} 
-          />
-          </div>      
-
+                                    hideThenShow("intro", "chooseLanguage");
+                                }}>
+                                Get Started
+                </Button>
+                        </Card.Body>
+                    </Card>
+                </Fade>
+                <ChooseLanguageCard
+                    back={() => { hideThenShow("chooseLanguage", "intro"); }}
+                    next={() => { hideThenShow("chooseLanguage", "previousScores"); }}
+                />
+                <PreviousScoresCard
+                    back={() => { hideThenShow("previousScores", "chooseLanguage"); }}
+                    next={() => { hideThenShow("previousScores", "goals"); }}
+                />
+                <GoalCard
+                    back={() => { hideThenShow("goals", "previousScores"); }}
+                    next={() => { hideThenShow("goals", "why"); }}
+                />
+                <WhyCard
+                    back={() => { hideThenShow("why", "goals"); }}
+                    next={() => { hideThenShow("why", "focus"); }}
+                />
+                <FocusCard
+                    back={() => { hideThenShow("focus", "why"); }}
+                    next={() => { hideThenShow("focus", "activities"); }}
+                />
+                <ActivitiesCard
+                    back={() => { hideThenShow("activities", "focus"); }}
+                    next={() => { hideThenShow("activities", "freqency"); }}
+                />
+                <FrequencyCard
+                    back={() => { hideThenShow("frequency", "activities"); }}
+                    next={() => { hideThenShow("frequency", "who"); }}
+                />
+                <WhoCard
+                    back={() => { hideThenShow("who", "goals"); }}
+                    next={() => { hideThenShow("who", "into"); }}
+                />
+            </div> 
       </div>
       <div class="Footer">
         <p>ILTP-Helper Copyright 2020</p>

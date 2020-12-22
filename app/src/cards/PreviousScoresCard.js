@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Button, Form, Col } from 'react-bootstrap';
 import { Fade } from 'react-reveal';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 import visibilityState from '../atoms/visibilityState';
 import surveyState from '../atoms/surveyState';

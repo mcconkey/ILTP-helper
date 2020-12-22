@@ -1,13 +1,17 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { Fade } from 'react-reveal';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
-import visibilityState from '../atoms/atoms/visibilityState';
+import visibilityState from '../atoms/visibilityState';
+import surveyState from '../atoms/surveyState';
+import progressState from '../atoms/progressState';
 
 const ActivitiesCard = ({next, back}) => {
 
-    let visible = useRecoilValue(visibilityState).activities ? true : false;
+    const visible = useRecoilValue(visibilityState).activities ? true : false;
+    const [progress, setProgress] = useRecoilState(progressState);
+    const [survey, setSurvey] = useRecoilState(surveyState);
     
     return (
         <React.Fragment>

@@ -1,13 +1,16 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { Fade } from 'react-reveal';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 import visibilityState from '../atoms/visibilityState';
-
+import progressState from '../atoms/progressState';
+import surveyState from '../atoms/surveyState';
 const WhyCard = ({next, back}) => {
 
-    let visible = useRecoilValue(visibilityState).why ? true : false;
+    const visible = useRecoilValue(visibilityState).why ? true : false;
+    const [progress, setProgress] = useRecoilState(progressState);
+    const [survey, setSurvey] = useRecoilState(surveyState);
     
     return (
         <React.Fragment>
@@ -22,7 +25,7 @@ const WhyCard = ({next, back}) => {
                 <Card style={{width: '40rem'}}>
                     <Card.Body>
                         <Card.Text>
-                        Previous Scores...
+                        Why
                         </Card.Text>
                         <Button 
                             variant="light" 
