@@ -25,7 +25,7 @@ const WhyCard = ({next, back}) => {
                 <Card style={{width: '40rem'}}>
                     <Card.Body>
                         <Card.Text>
-                        Why
+                        Why is achieving this goal important to you?
                         </Card.Text>
                         <Button 
                             variant="light" 

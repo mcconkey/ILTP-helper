@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button, Form } from 'react-bootstrap';
 import { Fade } from 'react-reveal';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
@@ -13,6 +13,15 @@ const GoalCard = ({next, back}) => {
     const [progress, setProgress] = useRecoilState(progressState);
     const [survey, setSurvey] = useRecoilState(surveyState);
     
+
+    const onChangeGoalHandler = (event) => {
+        if(!survey.goal){
+            setProgress(progress + 10);
+        }
+        setSurvey({...survey, ...{goal: event.target.value}});
+    };
+
+
     return (
         <React.Fragment>
             <Fade 
@@ -27,6 +36,19 @@ const GoalCard = ({next, back}) => {
                     <Card.Body>
                         <Card.Text>
                         What are your language goals?
+                        <Form.Control 
+                                placeholder="Select a goal or create your own..." 
+                                type="text" 
+                                size="lg" 
+                                list="goals" 
+                                style={{margin: '1vh', padding: '.5rem'}}
+                                onChange={onChangeGoalHandler} />
+                            <datalist id="goals">
+                                <option>Improve my language scores</option>
+                                <option>Maintain my language scores</option>
+                                <option>Become more proficient with my current mission</option>
+                                <option>Engage more with my target language</option>
+                            </datalist>
                         </Card.Text>
                         <Button 
                             variant="light" 

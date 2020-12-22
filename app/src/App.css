@@ -33,6 +33,41 @@
   font-size: calc(2px + 1vmin);
 }
 
+.BottomRightMenu {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: '20vw';
+    color: lightslategrey;
+    padding: 5px;
+}
+
+.GlassOverlay {
+    color: white;
+    position: fixed;
+    background-color: rgba(255, 255, 255, .15);  
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+    backdrop-filter: blur(5px);
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 0;
+    z-index: 1;
+    overflow: hidden;    
+    transition: 0.3s;
+
+}
+.OverlayContent {
+    margin-top: 10vh;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.GlassOverlayBottom{
+    position: fixed;
+    bottom: 1vh;
+    left: 50%;
+}
 .progress {
   min-width: 90vw;
 }
