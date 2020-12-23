@@ -23,7 +23,11 @@ const FocusCard = ({next, back}) => {
         if(survey.foci){
             fociList.push(...survey.foci);
         }
-        fociList.push(currentFocus);
+
+        if(!fociList.includes(currentFocus)){
+            fociList.push(currentFocus);
+        }
+        
         setSurvey({...survey, ...{foci: fociList}})
         setCurrentFocus("");
     }
@@ -34,7 +38,7 @@ const FocusCard = ({next, back}) => {
 
     const removeFocus = (focus = "") => {
         let newFoci = survey.foci.filter(item => item !== focus);
-        setSurvey({...survey, ...newFoci});    
+        setSurvey({...survey, ...{foci: newFoci}});    
     }
 
     const Badges =  () => {

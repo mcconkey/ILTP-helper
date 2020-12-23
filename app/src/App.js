@@ -72,10 +72,10 @@ function App() {
                           <Card.Body>
                               <Card.Title>Welcome!</Card.Title>
                               <Card.Text>
-                                This app is designed to make it easier for linguists to develop an
-                                Individualized Language Training Plan.  This program will ask you a series of 
-                                questions which will help you focus on achieving your Language learning goals.
-                </Card.Text>
+                                  This app is designed to make it easier for linguists to develop an
+                                  Individualized Language Training Plan.  This program will ask you a series of
+                                  questions which will help you focus on achieving your Language learning goals.
+                             </Card.Text>
                               <Button
                                   variant="light"
                                   onClick={() => {
@@ -83,7 +83,7 @@ function App() {
                                       hideThenShow("intro", "chooseLanguage");
                                   }}>
                                   Get Started
-                </Button>
+                                </Button>
                           </Card.Body>
                       </Card>
                   </Fade>

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Card, Button } from 'react-bootstrap';
+import React, {useState} from 'react';
+import { Card, Button, InputGroup, Form, Modal } from 'react-bootstrap';
 import { Fade } from 'react-reveal';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
@@ -13,6 +13,13 @@ const ActivitiesCard = ({next, back}) => {
     const [progress, setProgress] = useRecoilState(progressState);
     const [survey, setSurvey] = useRecoilState(surveyState);
     
+    const [currentActivity, setCurrentActivity] = useState("");
+    const [modalVisible, setModalVisible] =useState(false);
+
+    const onChangeHandler = () => {
+
+    };
+
     return (
         <React.Fragment>
             <Fade 
@@ -27,6 +34,7 @@ const ActivitiesCard = ({next, back}) => {
                     <Card.Body>
                         <Card.Text>
                         What activities are you going to do?
+                        
                         </Card.Text>
                         <Button 
                             variant="light" 
@@ -40,8 +48,14 @@ const ActivitiesCard = ({next, back}) => {
                             Next
                         </Button>
                     </Card.Body>
-                </Card>
+                </Card>                 
             </Fade>
+           <Modal
+            show={true}
+            
+           >
+                This is some text
+           </Modal>
         </React.Fragment>
     );
 
