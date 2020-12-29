@@ -20,6 +20,10 @@ const FocusCard = ({next, back}) => {
     const addFocusHandler = () => {
         let fociList = [];
 
+        if(!survey.foci){
+            setProgress(progress + 10);
+        }
+
         if(survey.foci){
             fociList.push(...survey.foci);
         }
@@ -89,7 +93,6 @@ const FocusCard = ({next, back}) => {
                                 style={{ padding: '.5rem'}}
                                 onChange={onChangeHandler}
                             />
-
                             <InputGroup.Append>
                                 <Button variant="outline-secondary" onClick={addFocusHandler}>Add</Button>
                             </InputGroup.Append>

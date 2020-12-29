@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, Button, Form } from 'react-bootstrap';
 import { Fade } from 'react-reveal';
 import { useRecoilState, useRecoilValue } from 'recoil';
@@ -12,16 +12,19 @@ const WhyCard = ({next, back}) => {
     const visible = useRecoilValue(visibilityState).why ? true : false;
     const [progress, setProgress] = useRecoilState(progressState);
     const [survey, setSurvey] = useRecoilState(surveyState);
+    const [progressAdded, setProgressAdded] = useState(false);
     
     const onChangeWhyHandler = (event) => {
 
-        if(!survey.why){
-
+        if(!survey.why && !progressAdded){
+            setProgressAdded(true);
             setProgress(progress + 10);
         }
         
         setSurvey({...survey, ...{why: event.target.value}});
     };
+
+    const goal = survey.goal ?? "my goal";
 
     return (
         <React.Fragment>
@@ -38,7 +41,7 @@ const WhyCard = ({next, back}) => {
                         <Card.Text>
                         Why is achieving this goal important to you?
                         <Form.Control 
-                                placeholder="Choose a language..." 
+                                placeholder={"My goal is important to me because..."} 
                                 as="textarea"
                                 size="lg" 
                                 rows={3}
