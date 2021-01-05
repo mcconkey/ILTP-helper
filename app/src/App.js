@@ -21,6 +21,8 @@ import WhoCard from './cards/WhoCard';
 import visibilityState from './atoms/visibilityState';
 import progressState from './atoms/progressState';
 import surveyState from './atoms/surveyState';
+import CompleteCard from './cards/CompleteCard';
+import ILTPCard from './cards/ILTPCard';
 
 function App() {
 
@@ -117,7 +119,15 @@ function App() {
                     />
                     <WhoCard
                         back={() => { hideThenShow("who", "goals"); }}
-                        next={() => { hideThenShow("who", "into"); }}
+                        next={() => { hideThenShow("who", "complete"); }}
+                    />
+                    <CompleteCard
+                        back={() => { hideThenShow("complete", "who"); }}
+                        next={() => { hideThenShow("complete", "ILTP")}}
+                    />
+                    <ILTPCard
+                        back={() => { hideThenShow("ILTP", "complete"); }}
+                        next={() => { hideThenShow("ILTP", "intro")}}
                     />
                 </div>
             </div>

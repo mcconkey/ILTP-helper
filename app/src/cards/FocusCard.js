@@ -81,7 +81,7 @@ const FocusCard = ({next, back}) => {
                 <Card style={{width: '40rem'}}>
                     <Card.Body>
                         <Card.Text>
-                        What aspects of {survey.targetLanguage ?? 'your target language'} do you
+                        What aspects of { survey.targetLanguage ?? 'your target language' } do you
                         plan to focus on? 
                         <InputGroup className="mb-3">
                             <Form.Control 
@@ -94,7 +94,7 @@ const FocusCard = ({next, back}) => {
                                 onChange={onChangeHandler}
                             />
                             <InputGroup.Append>
-                                <Button variant="outline-secondary" onClick={addFocusHandler}>Add</Button>
+                                <Button variant="outline-secondary" onClick={ addFocusHandler }>Add</Button>
                             </InputGroup.Append>
                         </InputGroup>
                             <datalist id="foci">

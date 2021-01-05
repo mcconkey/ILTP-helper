@@ -20,7 +20,10 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
 }
-
+.Cards {
+  display: grid;
+  place-items: center;
+}
 .Footer {
   text-align: center;
   background-color: #282c34;
@@ -85,9 +88,16 @@
     display: none;
 
 }
+.InlineCard {
+  display: 'inline-block';
+  display: 'inline-block';
+  height: '30vh';
+  width: '20vw';
+
+}
 .InputSlide {
   transition: 0.5s;
-  
+
 }
 
 .ActivityBadges{
