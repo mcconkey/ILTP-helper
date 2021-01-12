@@ -67,21 +67,58 @@ const Foci = ({foci}) => {
 };
 
 const Activities = ({activities}) => {
+    if(activities && activities.length){
+        return (
+            <React.Fragment>
+                <div>
+                    You identified the following activities:
+                    {activities && activities.map((item, index) => { 
+                        return(
+                            <div key={"activities"+index}></div>
+                        );
+                    })}
 
-    return (
-        <React.Fragment>
-           The activities
-        </React.Fragment>
-    );
+                </div>
+            </React.Fragment>
+        );
+    }else{
+        return(
+            <React.Fragment>
+                <div>You did not name any activities. Achieving your goal will take work! What will you
+                    do to achieve it? 
+                </div>
+            </React.Fragment>
+
+        );
+    }
 };
 
 const Mentors = ({mentors}) => {
+    if(mentors && mentors.length){
+        return (
+            <React.Fragment>
+                <div>
+                    You identified the following mentors:
+                    {mentors && mentors.map((item, index) => { 
+                        return(
+                            <div key={"mentors_"+index}>{item.name}</div>
+                        );
+                    })}
 
-    return (
-        <React.Fragment>
-           <div>This is mentors</div>
-        </React.Fragment>
-    );
+                </div>
+            </React.Fragment>
+        );
+    }else{
+        return(
+            <React.Fragment>
+                <div>You did not identify any mentors.  Consider adding one or more mentors in order to help you
+                    stay on track!
+                </div>
+            </React.Fragment>
+
+        );
+    }
+
 };
 
 
@@ -99,7 +136,7 @@ function ILTP() {
                 <Why why={survey.why} />
                 <Foci foci={survey.loci} />
                 <Activities activities={survey.activitiesFrequencies} />
-                <Mentors />
+                <Mentors mentors={survey.mentors} />
             </div>
         </React.Fragment>
     );
