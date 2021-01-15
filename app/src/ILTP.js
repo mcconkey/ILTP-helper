@@ -67,15 +67,16 @@ const Foci = ({foci}) => {
 };
 
 const Activities = ({activities}) => {
-    if(activities && activities.length){
+    console.log(activities);
+    if(activities && Object.keys(activities).length){
         return (
             <React.Fragment>
                 <div>
                     You identified the following activities:
-                    {activities && activities.map((item, index) => { 
-                        return(
-                            <div key={"activities"+index}></div>
-                        );
+                    {activities &&  Object.entries(activities).map((item, index) => {
+                        console.log(item);
+                        return (<div>{item[0]} which you will do {item[1]}</div>);
+                        
                     })}
 
                 </div>

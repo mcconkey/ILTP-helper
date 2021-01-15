@@ -62,7 +62,10 @@ function App() {
     }
 
     return (
-        <div class="App" style={{ overflow: 'hidden' }}>
+        <div class="App" style={{ overflow: 'hidden', 
+                                  backgroundImage: "url(/monterey_beach.jpg)",
+                                  backgroundPosition: "center",
+                                  backgroundSize: "cover",  }}>
             <div className="Header">
                 <p>ILTP-Helper</p>
                 <ProgressBar now={progress} />

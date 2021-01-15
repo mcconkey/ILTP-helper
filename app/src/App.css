@@ -11,8 +11,7 @@
 
 .Header {
   text-align: center;
-  background-color: #282c34;
-  color: white;
+  color: rgb(46, 46, 46);
   min-width: 100vw;
   display: flex;
   flex-direction: column;
@@ -26,14 +25,13 @@
 }
 .Footer {
   text-align: center;
-  background-color: #282c34;
   min-height: 5vh;
   display: flex;
-  color: white;
+  color: rgb(46, 46, 46);
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(2px + 1vmin);
+  font-size: calc(2px + 2vmin);
 }
 
 .BottomRightMenu {
@@ -41,7 +39,7 @@
     bottom: 0;
     right: 0;
     width: '20vw';
-    color: lightslategrey;
+    color: rgb(237, 241, 245);
     padding: 5px;
 }
 
