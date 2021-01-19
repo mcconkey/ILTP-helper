@@ -63,11 +63,7 @@ function App() {
 
     return (
         <div class="App" style={{ overflow: 'hidden', 
-<<<<<<< HEAD
-                                  backgroundImage: "url(/monterey_beach.jpg)",
-=======
                                   backgroundImage: "url(/monterey_trail.jpeg)",
->>>>>>> 618497808183e8decbfe6bb02f52b9483f2c5bf1
                                   backgroundPosition: "center",
                                   backgroundSize: "cover",  }}>
             <div className="Header">
