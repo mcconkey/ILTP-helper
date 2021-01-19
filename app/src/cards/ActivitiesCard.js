@@ -1,5 +1,5 @@
 import React, {useState, createRef} from 'react';
-import { Card, Button, Badge, FormControl } from 'react-bootstrap';
+import { Card, Button, Badge } from 'react-bootstrap';
 import { Fade } from 'react-reveal';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { AiFillPlusCircle, AiFillCheckCircle} from 'react-icons/ai';
@@ -10,14 +10,14 @@ import progressState from '../atoms/progressState';
 
 const ActivitiesCard = ({next, back}) => {
 
+    const progressValue = 10;
+
     const visible = useRecoilValue(visibilityState).activities ? true : false;
     const [progress, setProgress] = useRecoilState(progressState);
     const [survey, setSurvey] = useRecoilState(surveyState);
     
     const [currentActivity, setCurrentActivity] = useState("");
     const [addedProgress, setAddedProgress]  = useState(false);
-    const [activitiesVisible, setActivitiesVisible] = useState(false);
-    const [selectedActivities, setSelectedActivities] = useState([]);
     const [addActivityVisible, setAddActivityVisible] = useState(false);
 
     const inputRef = createRef();
@@ -50,22 +50,18 @@ const ActivitiesCard = ({next, back}) => {
 
         if(!addedProgress){
             setAddedProgress(true);
-            setProgress(progress + 10);
+            setProgress(progress + progressValue);
         }
         
         if(!isSelectedCheck(activity)){
             // if not selected add it to selected
-            //setSelectedActivities(new Set([...selectedActivities, activity]));
-            setSurvey({...survey, ...{activities: new Set([...survey.activities ?? [], activity])}});
+            setSurvey({...survey, ...{activities: new Array(...new Set([...survey.activities ?? [], activity]))}});
             
         }else{
             // if selected remove it from selected
-            //setSelectedActivities(new Array(...selectedActivities).filter(item => item !== activity));
             setSurvey({...survey, ...{activities: new Array(...survey.activities ?? [] ).filter(item => item !== activity)}});
         }
-        
-        //setSurvey({...survey, ...{activities: selectedActivities}});
-        
+       
     }
  
     const addActivityHandler = () => {

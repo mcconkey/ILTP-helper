@@ -9,14 +9,17 @@ import surveyState from '../atoms/surveyState';
 
 const GoalCard = ({next, back}) => {
 
+    const progressValue =  15
+
+
     const visible = useRecoilValue(visibilityState).goals ? true : false;
     const [progress, setProgress] = useRecoilState(progressState);
     const [survey, setSurvey] = useRecoilState(surveyState);
     
 
     const onChangeGoalHandler = (event) => {
-        if(!survey.goal){
-            setProgress(progress + 10);
+        if(!survey.hasOwnProperty("goal")){
+            setProgress(progress + progressValue);
         }
         setSurvey({...survey, ...{goal: event.target.value}});
     };

@@ -121,7 +121,7 @@ function App() {
                         next={() => { hideThenShow("frequency", "who"); }}
                     />
                     <WhoCard
-                        back={() => { hideThenShow("who", "goals"); }}
+                        back={() => { hideThenShow("who", "frequency"); }}
                         next={() => { hideThenShow("who", "complete"); }}
                     />
                     <CompleteCard

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, Button, Form, Row, Col, FormGroup } from 'react-bootstrap';
 import { Fade } from 'react-reveal';
 import { useRecoilState, useRecoilValue } from 'recoil';
@@ -22,13 +22,20 @@ const FrequencyCard = ({next, back}) => {
     let activities = Array.from(survey.activities ?? []);
     
 
+
     const calculateProgress = () => {
 
         // ratio of activities to 
-        let ratio = (Object.keys(activitiesFrequencies).length ?? 0) /(survey.activities.size ?? 1);
+        let ratio = (Object.keys(activitiesFrequencies)?.length ?? 0) / (survey.activities?.length ?? 1);
         
+        console.log("numerator:" + Object.keys(activitiesFrequencies)?.length);
+        console.log("denom: " + survey.activities?.length );
+
+        console.log("ratio: " + ratio);
+
         // get the amount of progress 
         let progressAmount = Math.floor(ratio * progressValue);
+        console.log("progressAmount: " + progressAmount);
 
         // add the progress to the state atom, subtract the amount previously added (tracked in local state)
         setProgress(progress + progressAmount - progressAdded);
@@ -37,17 +44,38 @@ const FrequencyCard = ({next, back}) => {
         setProgressAdded(progressAmount);
 
     }
+    useEffect(() => {
+            // ratio of activities to 
+            let ratio = (Object.keys(activitiesFrequencies)?.length ?? 0) / (survey.activities?.length ?? 1);
+    
+            console.log("progressAdd: " + progressAdded);
+            console.log("progress: " + progress);
+            console.log("numerator:" + Object.keys(activitiesFrequencies)?.length);
+            console.log("denom: " + survey.activities?.length );
+    
+            console.log("ratio: " + ratio);
+    
+            // get the amount of progress 
+            let progressAmount = Math.floor(ratio * progressValue);
+            console.log("progressAmount: " + progressAmount);
+    
+            // add the progress to the state atom, subtract the amount previously added (tracked in local state)
+            //setProgress(100);
+            setProgress(progress + progressAmount - progressAdded);
+    
+    
+            // update local state to reflect the amount of progress give
+            setProgressAdded(progressAmount);
+        
+    }, [survey, setProgress,  activitiesFrequencies]);
 
     const selectFrequency = (event, activity) => {
-        
-        console.log("fired selectFreq");
-        console.log(event.target.value);
         let tempObj = {};
         tempObj[activity] = event.target.value;
         setActivitiesFrequencies({...activitiesFrequencies, ...tempObj});
         setSurvey({...survey, ...{activitiesFrequencies: {...activitiesFrequencies, ...tempObj}}});
-        console.log(activitiesFrequencies);
-        calculateProgress();
+        //console.log(activitiesFrequencies);
+        
     }
 
     const ActivityFrequency = ({activity}) => {
@@ -66,7 +94,10 @@ const FrequencyCard = ({next, back}) => {
                 <Col>
                 <Form.Control 
                     as="select"
-                    onChange={(event) => selectFrequency(event, activity)}
+                    onChange={(event) => {
+                                            selectFrequency(event, activity);
+                                         //   calculateProgress();
+                                        }}
                     value={activitiesFrequencies[activity] ?? "-"}
                     custom                    
                 >

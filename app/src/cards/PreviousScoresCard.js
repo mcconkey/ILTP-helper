@@ -9,6 +9,9 @@ import progressState from '../atoms/progressState';
 
 const PreviousScoresCard = ({next, back}) => {
 
+    // on this paticular card this value is used twice 
+    const progressValue = 10;
+
     const visible = useRecoilValue(visibilityState).previousScores ? true : false;
     const [progress, setProgress] = useRecoilState(progressState);
     const [survey, setSurvey] = useRecoilState(surveyState);
@@ -16,8 +19,8 @@ const PreviousScoresCard = ({next, back}) => {
 
     const changeReadingScoreHandler = (event) => {
 
-        if(!survey.readingScore){
-            setProgress(progress + 5);
+        if(!survey.hasOwnProperty("readingScore")){
+            setProgress(progress + progressValue);
         }
         
          setSurvey({...survey, ...{readingScore: event.target.value}});
@@ -26,8 +29,8 @@ const PreviousScoresCard = ({next, back}) => {
 
     const changeListeningScoreHandler = (event) => {
 
-        if(!survey.listingScore){
-            setProgress(progress + 5);
+        if(!survey.hasOwnProperty("listeningScore")){
+            setProgress(progress + progressValue);
         }
         
         setSurvey({...survey, ...{listeningScore: event.target.value}});

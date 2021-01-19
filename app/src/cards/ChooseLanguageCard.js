@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Card, Button, Form } from 'react-bootstrap';
 import { Fade } from 'react-reveal';
-import { useRecoilState, useRecoilValue, useSetRecoilState, } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 import visibilityState from '../atoms/visibilityState';
 import progressState from '../atoms/progressState';
@@ -9,14 +9,22 @@ import surveyState from '../atoms/surveyState';
 
 const ChooseLanguageCard = ({back, next}) => {
 
+    const progressValue = 10;
+
     const visible = useRecoilValue(visibilityState).chooseLanguage ? true : false;
-    const setProgress = useSetRecoilState(progressState);
+    const [progress, setProgress] = useRecoilState(progressState);
     const [survey, setSurvey] = useRecoilState(surveyState);
 
     const onChangeLanguageHandler = (event) => {
-        
+
+        // Check to see if the survey has property of targetLanguage... if that property  does not exist
+        // then give this is the first time a language is being chosen, add the progressValue to the 
+        // progress meter. 
+        if(!survey.hasOwnProperty("targetLanguage")){
+            setProgress(progress + progressValue);
+        }
+   
         setSurvey({...survey, ...{targetLanguage: event.target.value }});
-        setProgress(10);
 
     } 
 

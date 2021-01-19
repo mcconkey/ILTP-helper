@@ -7,7 +7,10 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import visibilityState from '../atoms/visibilityState';
 import progressState from '../atoms/progressState';
 import surveyState from '../atoms/surveyState';
+
 const WhyCard = ({next, back}) => {
+
+    const progressValue = 20;
 
     const visible = useRecoilValue(visibilityState).why ? true : false;
     const [progress, setProgress] = useRecoilState(progressState);
@@ -18,7 +21,7 @@ const WhyCard = ({next, back}) => {
 
         if(!survey.why && !progressAdded){
             setProgressAdded(true);
-            setProgress(progress + 10);
+            setProgress(progress + progressValue);
         }
         
         setSurvey({...survey, ...{why: event.target.value}});
