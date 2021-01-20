@@ -68,7 +68,7 @@ function App() {
                                   backgroundSize: "cover",  }}>
             <div className="Header">
                 <p>ILTP-Helper</p>
-                <ProgressBar now={progress} />
+                <ProgressBar now={progress} label={`${progress}%`} />
             </div>
             <div className="Content">
                 <div className="Cards">

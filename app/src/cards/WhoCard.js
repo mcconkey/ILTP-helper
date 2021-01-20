@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, Button, Form, FormGroup, Row, Col, Badge } from 'react-bootstrap';
 import { Fade } from 'react-reveal';
 import { useRecoilState, useRecoilValue } from 'recoil';
@@ -22,6 +22,14 @@ const WhoCard = ({next, back}) => {
 
 
     const addMentor = () => {
+
+        // if there is no mentors property in the survey
+        // then this is the first mentor being added and 
+        // the progress bar should be updated
+        if(!survey.hasOwnProperty("mentors")){
+            setProgress(progress + progressValue);
+        }
+
         let tempMentorsObj = survey.mentors ? [...survey.mentors] : [];
         let tempMentorObj = {
             name: currentMentor,
@@ -29,7 +37,7 @@ const WhoCard = ({next, back}) => {
         };
         //tempMentorsObj[currentMentor] = currentMentorType;
         tempMentorsObj.push(tempMentorObj);
-        setSurvey({...survey, ...{mentors: tempMentorsObj}})
+        setSurvey({...survey, ...{mentors: tempMentorsObj}});
     }
 
     const Mentors = () => {

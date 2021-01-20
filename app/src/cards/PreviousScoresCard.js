@@ -9,8 +9,8 @@ import progressState from '../atoms/progressState';
 
 const PreviousScoresCard = ({next, back}) => {
 
-    // on this paticular card this value is used twice 
-    const progressValue = 10;
+    // on this card this value is used twice 
+    const progressValue = 5;
 
     const visible = useRecoilValue(visibilityState).previousScores ? true : false;
     const [progress, setProgress] = useRecoilState(progressState);

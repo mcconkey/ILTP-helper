@@ -10,6 +10,8 @@ import surveyState from '../atoms/surveyState';
 
 const FocusCard = ({next, back}) => {
 
+    const progressValue = 10;
+
     const visible = useRecoilValue(visibilityState).focus ? true : false;
     const [progress, setProgress] = useRecoilState(progressState);
     const [survey, setSurvey] = useRecoilState(surveyState);
@@ -21,7 +23,7 @@ const FocusCard = ({next, back}) => {
         let fociList = [];
 
         if(!survey.foci){
-            setProgress(progress + 10);
+            setProgress(progress + progressValue);
         }
 
         if(survey.foci){

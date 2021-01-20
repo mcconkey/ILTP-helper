@@ -9,7 +9,7 @@ import surveyState from '../atoms/surveyState';
 
 const GoalCard = ({next, back}) => {
 
-    const progressValue =  15
+    const progressValue =  15;
 
 
     const visible = useRecoilValue(visibilityState).goals ? true : false;
