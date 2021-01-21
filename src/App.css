@@ -1,0 +1,114 @@
+.App {
+    text-align: center;
+    background-color: #282c34;
+    display: grid;
+    grid-template-rows: 10vh 85vh 5vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+}
+
+.Header {
+  text-align: center;
+  color: rgb(46, 46, 46);
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+.Cards {
+  display: grid;
+  place-items: center;
+}
+.Footer {
+  text-align: center;
+  min-height: 5vh;
+  display: flex;
+  color: rgb(46, 46, 46);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(2px + 2vmin);
+}
+
+.BottomRightMenu {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: '20vw';
+    color: rgb(237, 241, 245);
+    padding: 5px;
+}
+
+.GlassOverlay {
+    color: white;
+    position: fixed;
+    background-color: rgba(255, 255, 255, .15);  
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.308); 
+    backdrop-filter: blur(5px);
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 0;
+    z-index: 1;
+    overflow: hidden;    
+    transition: 0.3s;
+
+}
+.OverlayContent {
+    margin-top: 10vh;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.GlassOverlayBottom{
+    position: fixed;
+    bottom: 1vh;
+    left: 50%;
+}
+
+.GlassModal {
+    color: white;
+    position: fixed;
+    top: 20%;
+    left: 20vw;
+    background-color: rgba(255, 255, 255, 0.774);  
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.308); 
+    backdrop-filter: blur(5px);
+    height: 60vh;
+    width: 60vw;
+    z-index: 1;
+    overflow: hidden;    
+    transition: 0.3s;
+    display: none;
+
+}
+.InlineCard {
+  display: 'inline-block';
+  display: 'inline-block';
+  height: '30vh';
+  width: '20vw';
+
+}
+.InputSlide {
+  transition: 0.5s;
+
+}
+
+.ActivityBadges{
+  overflow:hidden;
+  transition: 0.3s;
+  
+
+}
+.progress {
+  min-width: 90vw;
+}
+.Content {
+  display: grid;
+  height: 100%;
+  place-items: center;
+}
